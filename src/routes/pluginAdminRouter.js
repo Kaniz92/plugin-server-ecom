@@ -30,32 +30,13 @@ pluginAdminRouter.route('/getProducts').get(function (req, res) {
       request.get(shopRequestUrl,{headers:shopRequestHeaders})
         .then((shopResponse)=>{
            
-            //get TraceData - hardbind
-            const traceData = [
-                {
-                    "id": 38371,
-                    "title": "item 1"
-                },
-                {
-                    "id": 98631,
-                    "title": "item 2"
-                },
-                {
-                    "id": 63198,    
-                    "title": "item 3"
-                }
-            ];
-            JSON.stringify(traceData);
-            console.log(typeof traceData);   
-                    
             //reduce product.json by title and ids
             var productJson = JSON.parse(shopResponse); 
             var products = productJson.products;
             products = products.reduce(function(reducedJson, product) {
                 reducedJson.push({ 
                         id: product.id,
-                        title: product.title,
-                        traceData:traceData
+                        title: product.title
                     });
         
                 return reducedJson;
