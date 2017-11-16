@@ -9,6 +9,7 @@ var Item = require('../models/Item');
 
 // Defined store route
 itemRouter.route('/add/post').post(function (req, res) {
+  console.log(req.body);
   var item = new Item(req.body);
       item.save()
     .then(item => {
