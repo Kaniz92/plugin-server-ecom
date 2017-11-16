@@ -80,6 +80,10 @@ configRouter.route('/callback').get(function (req, res) {
         const accessToken = accessTokenResponse.access_token;//d3f8b981b59361811ab5bbb74767a8f1
         console.log(accessToken);//should save using util/saveAccessToken to mlab 
 
+        const save_ = { item: accessToken };
+        var item = new Item(save_);
+        item.save();
+
         //render react view
         res.redirect(reactViewAddress);
       })
