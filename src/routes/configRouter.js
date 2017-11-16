@@ -7,6 +7,8 @@ const nonce = require('nonce')();
 const querystring = require('querystring');
 const request = require('request-promise');
 
+var AccessToken = require('../models/AccessToken');
+
 //shopify app  apiky and secret
 const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
@@ -78,6 +80,9 @@ configRouter.route('/callback').get(function (req, res) {
         const accessToken = accessTokenResponse.access_token;//d3f8b981b59361811ab5bbb74767a8f1
         console.log(accessToken);//should save using util/saveAccessToken to mlab 
    
+        var _accessToken = new AccessToken(accessToken);
+        _accessToken.save();
+
         //render react view
         res.redirect(reactViewAddress);
       })
