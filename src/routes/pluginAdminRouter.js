@@ -17,7 +17,7 @@ var TracifiedProductItem = require('../models/TracifiedProductItem');
 const shop = 'Tracified-Shopify.myshopify.com';
 const accessToken = '84f6d330f45a2ddb76b5a14c63d3bd75'; 
 const shopRequestUrl = 'https://' + shop + '/admin/products.json';
-const tracifiedRequestUrl='https://'
+const tracifiedRequestUrl='https://tracified-mock-api.herokuapp.com/Traceability_data/Data'
   
 // for /pluginAdmin/getProducts
 //get product json from shopify and make list of product handlers with id
@@ -54,8 +54,20 @@ pluginAdminRouter.route('/getProducts').get(function (req, res) {
   // for /pluginAdmin/getTracibilityItems
 //get product json from shopify and make list of product handlers with id
 pluginAdminRouter.route('/getTracibilityItems').get(function (req, res) {
-    
-   
+ 
+      request.get(tracifiedRequestUrl)
+        .then((response)=>{
+           
+            //reduce product.json by title and ids
+            var traceJson = JSON.parse(response); 
+           
+            console.log(traceJson);
+            res.json(traceJson);
+
+        })
+        .catch(err=>{
+            res.status(err.statusCode).send(err.error.error_description);
+        });
 });
 
   module.exports = pluginAdminRouter;
