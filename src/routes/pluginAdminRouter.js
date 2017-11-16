@@ -15,7 +15,7 @@ var TracifiedProductItem = require('../models/TracifiedProductItem');
 
 //these should save in env or mlab
 const shop = 'Tracified-Shopify.myshopify.com';
-const accessToken = 'd3f8b981b59361811ab5bbb74767a8f1'; 
+const accessToken = '84f6d330f45a2ddb76b5a14c63d3bd75'; 
 const shopRequestUrl = 'https://' + shop + '/admin/products.json';
 const tracifiedRequestUrl='https://'
   
