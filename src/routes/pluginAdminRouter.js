@@ -57,12 +57,16 @@ pluginAdminRouter.route('/getTracibilityItems').get(function (req, res) {
  
       request.get(tracifiedRequestUrl)
         .then((response)=>{
+                   //reduce product.json by title and ids
+                   var traceJson = JSON.parse(response);
+            const {
+                tracified_item_list: tracified_item_list = {}
+              } = traceJson;
+
+      
            
-            //reduce product.json by title and ids
-            var traceJson = JSON.parse(response); 
-           
-            console.log(traceJson);
-            res.json(traceJson);
+            console.log(tracified_item_list);
+            res.json(tracified_item_list);
 
         })
         .catch(err=>{
