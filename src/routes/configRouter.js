@@ -15,8 +15,8 @@ const apiSecret = process.env.SHOPIFY_API_SECRET;
 const scopes = 'read_products';
 
 //change these with heroku url
-const forwardingAddress = "https://60e54122.ngrok.io"; 
-const reactViewAddress="https://ecf2fbf4.ngrok.io/product-mapping";
+const forwardingAddress = "https://plugin-server-ecom.herokuapp.com/"; 
+const reactViewAddress="https://plugin-client-ecom.herokuapp.com/";
 
 var configRouter = express.Router();
 
